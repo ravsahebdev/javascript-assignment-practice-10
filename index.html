@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Assignment Practice 10</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">tasks[]</span>
+      <h1>🚀 JavaScript Assignment Practice 10</h1>
+    </div>
+    <p class="site-sub">37 Interactive JavaScript & DOM assignments demonstrating DOM manipulation, events, forms,
+      LocalStorage, timers, UI components, and responsive design.
+      <code>app.js</code>, grep for its <code>Q##</code> tag.
+    </p>
+    <button id="theme-toggle" class="theme-btn" aria-pressed="false">🌙 Dark mode</button>
+  </header>
+
+  <div class="layout">
+    <nav class="task-nav" aria-label="Task index" id="task-nav">
+      <button type="button" class="nav-label" id="nav-toggle" aria-expanded="false">
+        index <span class="nav-caret">▾</span>
+      </button>
+      <ol id="task-nav-list" class="nav-list"></ol>
+    </nav>
+
+    <main class="task-main">
+
+      <!-- 16 -->
+      <section class="task" id="task-16" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">1</span>
+          <h2>Color‑Cycling Button</h2>
+        </header>
+        <p class="task-desc">A button cycles the page background through 4+ colors on each click, looping back to the
+          start.</p>
+        <div class="demo" id="demo-16">
+          <button id="cycle-btn" class="btn">Click to cycle color</button>
+          <p class="hint">Current: <span id="cycle-color-label">Sunrise</span></p>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="task" id="task-17" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">2</span>
+          <h2>Live Character Counter</h2>
+        </header>
+        <p class="task-desc">A textarea with a live character count below it, updating as the user types.</p>
+        <div class="demo" id="demo-17">
+          <textarea id="char-input" class="input" rows="3" maxlength="120" placeholder="Type something…"></textarea>
+          <p class="hint"><span id="char-count">0</span> / 120 characters</p>
+        </div>
+      </section>
+
+      <!-- 18 -->
+      <section class="task" id="task-18" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">3</span>
+          <h2>Read More / Read Less</h2>
+        </header>
+        <p class="task-desc">A paragraph with a toggle link that expands/collapses the text.</p>
+        <div class="demo" id="demo-18">
+          <p id="read-more-text" class="clamp">
+            The event loop is one of the most important concepts to understand in JavaScript.
+            It's what lets the language run non-blocking, asynchronous code, even though JavaScript itself
+            is single-threaded, by offloading operations to the browser or Node APIs and handling their
+            callbacks once the current call stack is empty. Understanding the call stack, the task queue,
+            and the microtask queue is essential for reasoning about when your code actually runs.
+          </p>
+          <a href="#" id="read-more-toggle" class="link">Read more</a>
+        </div>
+      </section>
+
+      <!-- 19 -->
+      <section class="task" id="task-19" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">4</span>
+          <h2>Click Counter App</h2>
+        </header>
+        <p class="task-desc">A number starting at 0 that increases by 1 on every button click.</p>
+        <div class="demo" id="demo-19">
+          <p class="big-number" id="click-count">0</p>
+          <button id="click-btn" class="btn">Click me</button>
+          <button id="click-reset" class="btn btn-ghost">Reset</button>
+        </div>
+      </section>
+
+      <!-- 20-22 -->
+      <section class="task" id="task-20" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">5</span>
+          <h2>To‑Do List — Add / Delete / Mark Done</h2>
+        </header>
+        <p class="task-desc">
+          <strong>20.</strong> Input + Add button appends items to a list and clears the input.
+          <strong>21.</strong> Each item (including new ones) has a delete button that removes only that item.
+          <strong>22.</strong> Clicking a task's text toggles a completed (strikethrough) style.
+          This list is also wired up for <a href="#task-42">Q25's</a> persistence — try refreshing the page.
+        </p>
+        <div class="demo" id="demo-20">
+          <form id="todo-form" class="row">
+            <input id="todo-input" class="input" type="text" placeholder="Add a task…" autocomplete="off">
+            <button class="btn" type="submit">Add</button>
+          </form>
+          <ul id="todo-list" class="list"></ul>
+        </div>
+      </section>
+
+      <!-- 23 -->
+      <section class="task" id="task-23" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">6</span>
+          <h2>Live Celsius → Fahrenheit</h2>
+        </header>
+        <p class="task-desc">An input for Celsius that live-updates a Fahrenheit display using F = C × 9/5 + 32.</p>
+        <div class="demo" id="demo-23">
+          <input id="celsius-input" class="input" type="number" placeholder="°C" value="0">
+          <p class="hint">= <span id="fahrenheit-output">32</span> °F</p>
+        </div>
+      </section>
+
+      <!-- 24 -->
+      <section class="task" id="task-24" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">7</span>
+          <h2>Live Digital Clock</h2>
+        </header>
+        <p class="task-desc">Display and update the current time every second using setInterval and Date.</p>
+        <div class="demo" id="demo-24">
+          <p class="clock" id="digital-clock">--:--:--</p>
+        </div>
+      </section>
+
+      <!-- 25 -->
+      <section class="task" id="task-25" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">8</span>
+          <h2>Light / Dark Mode Switch</h2>
+        </header>
+        <p class="task-desc">A button toggles a class on &lt;body&gt; to switch themes. This is the same switch as the
+          "🌙 Dark mode" button in the page header — it also underlies <a href="#task-43">Q26</a> which persists the
+          choice.</p>
+        <div class="demo" id="demo-25">
+          <button id="theme-toggle-2" class="btn">Toggle theme</button>
+          <p class="hint">Current theme: <span id="theme-label">light</span></p>
+        </div>
+      </section>
+
+      <!-- 26 -->
+      <section class="task" id="task-26" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">9</span>
+          <h2>Required Field Inline Errors</h2>
+        </header>
+        <p class="task-desc">A form with required fields shows inline errors on empty submit, clearing once filled.</p>
+        <div class="demo" id="demo-26">
+          <form id="required-form" class="stack" novalidate>
+            <label>Name
+              <input class="input" type="text" name="name" data-required="true">
+              <span class="error" data-error-for="name"></span>
+            </label>
+            <label>Email
+              <input class="input" type="email" name="email" data-required="true">
+              <span class="error" data-error-for="email"></span>
+            </label>
+            <button class="btn" type="submit">Submit</button>
+            <p class="hint" id="required-success"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- 27 -->
+      <section class="task" id="task-27" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">10</span>
+          <h2>Image Next / Previous Swapper</h2>
+        </header>
+        <p class="task-desc">Next/Previous buttons cycle through 4+ images, looping at both ends.</p>
+        <div class="demo" id="demo-27">
+          <div class="swatch" id="swap-image" style="background:#2A9D8F">🖼️ Image 1</div>
+          <div class="row">
+            <button id="swap-prev" class="btn btn-ghost">‹ Previous</button>
+            <button id="swap-next" class="btn btn-ghost">Next ›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 28 -->
+      <section class="task" id="task-28" data-difficulty="Easy">
+        <header class="task-head"><span class="task-id">11</span>
+          <h2>Save and Load a Note</h2>
+        </header>
+        <p class="task-desc">A textarea + Save button stores text in localStorage and restores it automatically on page
+          load.</p>
+        <div class="demo" id="demo-28">
+          <textarea id="note-input" class="input" rows="3" placeholder="Write a note…"></textarea>
+          <div class="row">
+            <button id="note-save" class="btn">Save</button>
+            <span class="hint" id="note-status"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 29 -->
+      <section class="task" id="task-29" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">12</span>
+          <h2>FAQ Accordion</h2>
+        </header>
+        <p class="task-desc">4+ Q&A pairs; clicking a question reveals its answer and closes any other open answer.</p>
+        <div class="demo" id="demo-29">
+          <div id="faq-list" class="accordion"></div>
+        </div>
+      </section>
+
+      <!-- 30 -->
+      <section class="task" id="task-30" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">13</span>
+          <h2>Tabbed Content Switcher</h2>
+        </header>
+        <p class="task-desc">3+ tabs; clicking one shows its content, hides the others, highlights the active tab.</p>
+        <div class="demo" id="demo-30">
+          <div class="tabs" id="tab-buttons" role="tablist"></div>
+          <div id="tab-panels"></div>
+        </div>
+      </section>
+
+      <!-- 31 -->
+      <section class="task" id="task-31" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">14</span>
+          <h2>Star Rating Widget</h2>
+        </header>
+        <p class="task-desc">5 clickable stars; clicking one highlights it and all stars before it.</p>
+        <div class="demo" id="demo-31">
+          <div class="stars" id="star-rating"></div>
+          <p class="hint">Rating: <span id="star-value">0</span> / 5</p>
+        </div>
+      </section>
+
+      <!-- 32 -->
+      <section class="task" id="task-32" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">15</span>
+          <h2>Live List Search Filter</h2>
+        </header>
+        <p class="task-desc">A search input filters a list of 8+ names live as the user types.</p>
+        <div class="demo" id="demo-32">
+          <input id="name-filter" class="input" type="text" placeholder="Search names…">
+          <ul id="name-list" class="list"></ul>
+        </div>
+      </section>
+
+      <!-- 33 -->
+      <section class="task" id="task-33" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">16</span>
+          <h2>Live Password Strength Meter</h2>
+        </header>
+        <p class="task-desc">A password field with a live Weak/Medium/Strong label based on length and character
+          variety.</p>
+        <div class="demo" id="demo-33">
+          <input id="password-input" class="input" type="password" placeholder="Enter a password…">
+          <p class="hint">Strength: <span id="password-strength" class="badge">—</span></p>
+        </div>
+      </section>
+
+      <!-- 34 -->
+      <section class="task" id="task-34" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">17</span>
+          <h2>Click‑Outside‑to‑Close Modal</h2>
+        </header>
+        <p class="task-desc">A modal closes via an X button or by clicking the overlay, but not by clicking inside the
+          modal.</p>
+        <div class="demo" id="demo-34">
+          <button id="modal-open" class="btn">Open modal</button>
+          <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal-box">
+              <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+              <h3>A modal window</h3>
+              <p>Click the overlay outside this box, or the × button, to close me.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 35 -->
+      <section class="task" id="task-35" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">18</span>
+          <h2>Custom Dropdown Menu</h2>
+        </header>
+        <p class="task-desc">A custom-built dropdown (not &lt;select&gt;) that opens/closes on click and updates the
+          button text on selection.</p>
+        <div class="demo" id="demo-35">
+          <div class="dropdown" id="dropdown">
+            <button class="btn btn-ghost" id="dropdown-btn">Choose a fruit ▾</button>
+            <ul class="dropdown-menu hidden" id="dropdown-menu">
+              <li data-value="Mango">Mango</li>
+              <li data-value="Papaya">Papaya</li>
+              <li data-value="Guava">Guava</li>
+              <li data-value="Litchi">Litchi</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 36 -->
+      <section class="task" id="task-36" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">19</span>
+          <h2>Mini Shopping Cart Counter</h2>
+        </header>
+        <p class="task-desc">3+ products with Add-to-Cart buttons that update a running item count and total price.</p>
+        <div class="demo" id="demo-36">
+          <div id="shop-products" class="grid-3"></div>
+          <p class="hint">Cart: <span id="cart-count">0</span> items — ₹<span id="cart-total">0</span></p>
+        </div>
+      </section>
+
+      <!-- 37 -->
+      <section class="task" id="task-37" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">20</span>
+          <h2>Sortable Data Table</h2>
+        </header>
+        <p class="task-desc">A table with 3+ columns; clicking a header sorts by that column, toggling asc/desc on
+          repeat clicks.</p>
+        <div class="demo" id="demo-37">
+          <table class="table" id="sort-table">
+            <thead>
+              <tr>
+                <th data-key="name" data-type="string">Name ⇅</th>
+                <th data-key="price" data-type="number">Price ⇅</th>
+                <th data-key="category" data-type="string">Category ⇅</th>
+              </tr>
+            </thead>
+            <tbody id="sort-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 38 -->
+      <section class="task" id="task-38" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">21</span>
+          <h2>Stopwatch — Start / Pause / Reset</h2>
+        </header>
+        <p class="task-desc">Start, Pause, and Reset buttons that behave correctly relative to elapsed time.</p>
+        <div class="demo" id="demo-38">
+          <p class="clock" id="stopwatch-display">00:00.0</p>
+          <div class="row">
+            <button id="sw-start" class="btn">Start</button>
+            <button id="sw-pause" class="btn btn-ghost">Pause</button>
+            <button id="sw-reset" class="btn btn-ghost">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 39 -->
+      <section class="task" id="task-39" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">22</span>
+          <h2>Multi‑Step Form Wizard</h2>
+        </header>
+        <p class="task-desc">A 3+ step form with Next/Back buttons and a progress indicator like "Step 2 of 3".</p>
+        <div class="demo" id="demo-39">
+          <p class="hint" id="wizard-progress">Step 1 of 3</p>
+          <div id="wizard-steps"></div>
+          <div class="row">
+            <button id="wizard-back" class="btn btn-ghost">Back</button>
+            <button id="wizard-next" class="btn">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 40 -->
+      <section class="task" id="task-40" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">23</span>
+          <h2>Auto‑Dismissing Toast Notifications</h2>
+        </header>
+        <p class="task-desc">A button creates a toast message that disappears on its own after ~3 seconds.</p>
+        <div class="demo" id="demo-40">
+          <button id="toast-btn" class="btn">Show toast</button>
+          <div id="toast-container" class="toast-container"></div>
+        </div>
+      </section>
+
+      <!-- 41 -->
+      <section class="task" id="task-41" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">24</span>
+          <h2>Lightbox Image Gallery</h2>
+        </header>
+        <p class="task-desc">Clicking a thumbnail opens a larger version in an overlay, closable via a close button or
+          outside click.</p>
+        <div class="demo" id="demo-41">
+          <div id="lightbox-thumbs" class="grid-4"></div>
+          <div id="lightbox-overlay" class="modal-overlay hidden">
+            <div class="modal-box lightbox-box">
+              <button id="lightbox-close" class="modal-close" aria-label="Close">×</button>
+              <div id="lightbox-large" class="swatch swatch-lg"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 42 -->
+      <section class="task" id="task-42" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">25</span>
+          <h2>Persistent To‑Do List</h2>
+        </header>
+        <p class="task-desc">Upgrade the to-do list (<a href="#task-20">Q5</a>) to save/restore the full task array via
+          localStorage using JSON.stringify / JSON.parse. This is already active on that widget — every
+          add/delete/toggle writes to <code>localStorage["todos"]</code>, so refreshing the page keeps your list.</p>
+        <div class="demo" id="demo-42">
+          <p class="hint">Try it: add a task above in Q5, then reload this page. It'll still be there.</p>
+        </div>
+      </section>
+
+      <!-- 43 -->
+      <section class="task" id="task-43" data-difficulty="Medium">
+        <header class="task-head"><span class="task-id">26</span>
+          <h2>Remembered Theme Preference</h2>
+        </header>
+        <p class="task-desc">Upgrade the theme toggle (<a href="#task-25">Q8</a>) to save the chosen theme in
+          localStorage and apply it automatically on page load. Already wired into the header's theme button — reload
+          the page after toggling and the theme sticks.</p>
+        <div class="demo" id="demo-43">
+          <p class="hint">Stored theme: <span id="stored-theme-label">—</span></p>
+        </div>
+      </section>
+
+      <!-- 44 -->
+      <section class="task" id="task-44" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">27</span>
+          <h2>Render‑Function To‑Do App</h2>
+        </header>
+        <p class="task-desc">Tasks are stored as an array of objects; a single render() function redraws the entire list
+          from that array on every change. This is a separate implementation from Q5 to show the pure "state → render"
+          pattern.</p>
+        <div class="demo" id="demo-44">
+          <form id="render-todo-form" class="row">
+            <input id="render-todo-input" class="input" type="text" placeholder="Add a task…" autocomplete="off">
+            <button class="btn" type="submit">Add</button>
+          </form>
+          <ul id="render-todo-list" class="list"></ul>
+        </div>
+      </section>
+
+      <!-- 45 -->
+      <section class="task" id="task-45" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">28</span>
+          <h2>Infinite Scrolling List</h2>
+        </header>
+        <p class="task-desc">A scrollable list that auto-loads the next batch of items when the user scrolls near the
+          bottom.</p>
+        <div class="demo" id="demo-45">
+          <div id="infinite-scroll-box" class="scroll-box">
+            <ul id="infinite-list" class="list"></ul>
+            <p class="hint" id="infinite-loading">Scroll for more…</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 46 -->
+      <section class="task" id="task-46" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">29</span>
+          <h2>API‑Powered Dashboard Cards</h2>
+        </header>
+        <p class="task-desc">Fetch data from a public API on load, show a loading state, then render one card per item,
+          or an error message on failure.</p>
+        <div class="demo" id="demo-46">
+          <div id="dashboard-cards" class="grid-3">
+            <p class="hint">Loading…</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 47 -->
+      <section class="task" id="task-47" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">30</span>
+          <h2>Debounced Live API Search</h2>
+        </header>
+        <p class="task-desc">A search input that debounces API calls (400ms) instead of firing on every keystroke.</p>
+        <div class="demo" id="demo-47">
+          <input id="api-search-input" class="input" type="text" placeholder="Search products (try “phone”)…">
+          <ul id="api-search-results" class="list"></ul>
+        </div>
+      </section>
+
+      <!-- 48 -->
+      <section class="task" id="task-48" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">31</span>
+          <h2>Decoupled Cart via Custom Events</h2>
+        </header>
+        <p class="task-desc">An Add-to-Cart button dispatches a custom itemAdded event; a separate listener updates the
+          cart summary independently.</p>
+        <div class="demo" id="demo-48">
+          <button id="event-add-btn" class="btn">Add "Wireless Mouse" to cart</button>
+          <p class="hint" id="event-cart-summary">Cart summary listener heard: 0 items</p>
+        </div>
+      </section>
+
+      <!-- 49 -->
+      <section class="task" id="task-49" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">32</span>
+          <h2>Drag‑and‑Drop Sortable List</h2>
+        </header>
+        <p class="task-desc">A list where items can be dragged and dropped into a new order within the same list.</p>
+        <div class="demo" id="demo-49">
+          <ul id="dnd-list" class="list dnd-list"></ul>
+        </div>
+      </section>
+
+      <!-- 50 -->
+      <section class="task" id="task-50" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">33</span>
+          <h2>Kanban Board with Draggable Cards</h2>
+        </header>
+        <p class="task-desc">A 3-column board (To Do / In Progress / Done) where cards can be dragged between columns.
+        </p>
+        <div class="demo" id="demo-50">
+          <div class="kanban" id="kanban-board"></div>
+        </div>
+      </section>
+
+      <!-- 51 -->
+      <section class="task" id="task-51" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">34</span>
+          <h2>Form Validation via Event Delegation</h2>
+        </header>
+        <p class="task-desc">A signup form validated using one listener on the form itself, determining which field
+          triggered it.</p>
+        <div class="demo" id="demo-51">
+          <form id="delegated-form" class="stack" novalidate>
+            <label>Username
+              <input class="input" type="text" name="username" minlength="3" required>
+              <span class="error" data-error-for="username"></span>
+            </label>
+            <label>Email
+              <input class="input" type="email" name="email" required>
+              <span class="error" data-error-for="email"></span>
+            </label>
+            <label>Password
+              <input class="input" type="password" name="password" minlength="6" required>
+              <span class="error" data-error-for="password"></span>
+            </label>
+            <button class="btn" type="submit">Sign up</button>
+            <p class="hint" id="delegated-success"></p>
+          </form>
+        </div>
+      </section>
+
+      <!-- 52 -->
+      <section class="task" id="task-52" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">35</span>
+          <h2>Lazy‑Loaded Image Gallery</h2>
+        </header>
+        <p class="task-desc">Images load their real src only when scrolled into view, using IntersectionObserver.</p>
+        <div class="demo" id="demo-52">
+          <div id="lazy-gallery" class="scroll-box lazy-box"></div>
+        </div>
+      </section>
+
+      <!-- 53 -->
+      <section class="task" id="task-53" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">36</span>
+          <h2>Nested Comment Thread</h2>
+        </header>
+        <p class="task-desc">Comments with a Reply option that nests new replies underneath, working at any depth.</p>
+        <div class="demo" id="demo-53">
+          <div id="comment-thread"></div>
+        </div>
+      </section>
+
+      <!-- 54 -->
+      <section class="task" id="task-54" data-difficulty="Hard">
+        <header class="task-head"><span class="task-id">37</span>
+          <h2>localStorage vs sessionStorage Visit Tracker</h2>
+        </header>
+        <p class="task-desc">Track and display visit counts separately in localStorage and sessionStorage, with a Clear
+          All Data button.</p>
+        <div class="demo" id="demo-54">
+          <p class="hint">All-time visits (localStorage): <strong id="visits-local">0</strong></p>
+          <p class="hint">This-session visits (sessionStorage): <strong id="visits-session">0</strong></p>
+          <button id="visits-clear" class="btn btn-ghost">Clear all data</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">Built as one page for the DOM practice set — Q1 through Q37.</footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
