@@ -11,7 +11,7 @@ function evenOdd(num) {
     if (Number.isNaN(num)) {
         return "Enter Valid Number";
     }
-    return num % 2 === 0 ? "Even Number" : "Odd ";
+    return num % 2 === 0 ? "Even Number" : "Odd Number";
 }
 console.log(evenOdd(2));
 console.log(evenOdd(-2));

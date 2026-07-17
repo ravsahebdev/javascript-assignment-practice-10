@@ -300,7 +300,7 @@ body {
   .nav-list a {
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 5px 9px;
+    /* padding: 5px 9px; */
   }
 
   .brand { padding-right: 0; }

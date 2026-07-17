@@ -1086,7 +1086,7 @@
   document.getElementById("visits-clear").addEventListener("click", () => {
     localStorage.removeItem("visits");
     sessionStorage.removeItem("visits");
-    localLabel.textContent = "1";
-    sessionLabel.textContent = "1";
+    localLabel.textContent = "0";
+    sessionLabel.textContent = "0";
   });
 })();
